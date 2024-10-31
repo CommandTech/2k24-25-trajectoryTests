@@ -22,6 +22,7 @@ public class RobotContainer {
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
 
   private SendableChooser<Command> autoChooser = new SendableChooser<Command>();
+
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
   private final CommandSwerveDrivetrain drivetrain = TunerConstants.DriveTrain; // My drivetrain
@@ -57,6 +58,7 @@ public class RobotContainer {
   }
 
   public RobotContainer() {
+    autoChooser.addOption("None", null);
     configureBindings();
   }
 

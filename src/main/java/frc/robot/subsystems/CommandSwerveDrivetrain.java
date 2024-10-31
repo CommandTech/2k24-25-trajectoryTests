@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 
+
 /**
  * Class that extends the Phoenix SwerveDrivetrain class and implements
  * subsystem so it can be used in command-based projects easily.
@@ -79,5 +80,16 @@ public class CommandSwerveDrivetrain extends SwerveDrivetrain implements Subsyst
                 hasAppliedOperatorPerspective = true;
             });
         }
+    }
+
+    public Command followTrajectory(String name){
+        var trajectory = Choreo.loadTrajectory("myTrajectory");
+        if (trajectory.isPresent()) {
+            // Do something with the trajectory
+            drive.followTrajectory(trajectory.get()).schedule();
+        } else {
+            // If the trajectory is not found, ChoreoLib already prints to DriverStation
+        }
+        return null;
     }
 }
